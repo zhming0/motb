@@ -3,4 +3,9 @@ pom.xml
 /lib/
 /classes/
 /targets/
+/target/
 .lein-deps-sum
+.lein-repl-history
+
+*.swp
+.DS_Store
