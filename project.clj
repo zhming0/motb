@@ -7,7 +7,8 @@
                  [ring/ring-core "1.1.8"]
                  [ring/ring-jetty-adapter "1.1.8"]
                  [compojure "1.1.5"]
-                 [org.clojure/tools.trace "0.7.5"]]
+                 [org.clojure/tools.trace "0.7.5"]
+                 [congomongo "0.4.1"]]
   :plugins [[lein-ring "0.8.5"]]
   :main motb.core
   :ring {:handler motb.core/app})
