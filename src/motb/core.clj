@@ -20,7 +20,9 @@
 
 (defroutes main-routes 
   (GET "/" [] (resource-response "index.html" {:root "public"}))
+  (GET "/blog*" [] push-state-redirect)
   (GET "/login" [] push-state-redirect)
+  (GET "/admin*" [] push-state-redirect)
   (resources "/")
   (not-found "Page not found"))
 

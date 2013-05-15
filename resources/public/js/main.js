@@ -1,10 +1,12 @@
 require.config({
     paths: {
-        jquery: 'libs/jquery',
-        underscore: 'libs/underscore',
-        backbone: 'libs/backbone',
+        jquery: 'libs/jquery/jquery',
+        underscore: 'libs/underscore/underscore',
+        backbone: 'libs/backbone/backbone',
         templates: '../templates',
-        bootstrap: 'libs/bootstrap'
+        bootstrap: 'libs/bootstrap/bootstrap',
+        text: 'libs/require/text',
+        domReady: 'libs/require/domReady'
     },
     
     shim: {
@@ -24,7 +26,7 @@ require.config({
 });
 
 require([
-    'app',
-], function(App){
-    App.initialize();
+    'motb',
+], function(Motb, Events){
+    Motb.initialize();
 });
