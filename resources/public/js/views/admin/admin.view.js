@@ -2,8 +2,9 @@ define([
     'jquery',         
     'underscore', 
     'backbone',        
+    'events',
     'text!templates/admin/admin.html'
-], function($, _, Backbone, adminTemplate){
+], function($, _, Backbone, Events, adminTemplate){
     var AdminView = Backbone.View.extend({
         el: 'body',
 
@@ -23,13 +24,22 @@ define([
             this.$el.html(adminTemplate);
             require([
                 'views/admin/leftbar/leftbar.view',
-                'views/admin/postcontrol/postcontrol.view'
-            ], function(LeftbarView, PostControlView) {
+                'views/admin/postcontrol/postcontrol.view',
+                'views/blog/footer/footer.view'
+            ], function(LeftbarView, PostControlView, FooterView) {
                 (new LeftbarView()).render();
                 (new PostControlView()).render();
+                (new FooterView()).render();
             });
 
             Events.on("admin:changeControl", function(msg) {
+                if (msg == "post") {
+                    require([
+                        'views/admin/leftbar/leftbar.view'
+                    ], function(PostControlView){
+                        (new PostControlView()).render();
+                    });
+                }
             }); 
         }
     });

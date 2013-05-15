@@ -12,6 +12,18 @@ define([
             //this.render();
         },
 
+        events: {
+            "click .motb-postcontrol-btn-edit": "edit"
+        },
+
+        edit: function(evt) {
+            require([
+                'views/admin/postcontrol/postedit.view'
+            ], function(PostEditView){
+                (new PostEditView).render();
+            });
+        },
+
         render: function() {
             this.$el.html(postControlTemplate);
         }

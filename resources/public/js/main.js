@@ -6,7 +6,10 @@ require.config({
         templates: '../templates',
         bootstrap: 'libs/bootstrap/bootstrap',
         text: 'libs/require/text',
-        domReady: 'libs/require/domReady'
+        domReady: 'libs/require/domReady',
+        markdownConverter: 'libs/pagedown/Markdown.Converter',
+        markdownEditor: 'libs/pagedown/Markdown.Editor',
+        markdownSanitizer: 'libs/pagedown/Markdown.Sanitizer',
     },
     
     shim: {
@@ -20,7 +23,18 @@ require.config({
         'bootstrap': {
             deps: ["jquery"],
             exports: "$.fn.popover"
-        }
+        },
+        'markdownConvertor': {
+            exports: "Markdown.Converter"
+        },
+        'markdownEditor': {
+            deps: ["markdownConverter"],
+            exports: "Markdown.Editor"
+        },
+        'markdownSanitizer': {
+            deps: ["markdownConverter"],
+            exports: "Markdown.getSanitizingConverter"
+        },
     }
 
 });

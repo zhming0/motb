@@ -13,14 +13,20 @@ define([
         },
 
         events: {
-            "click .motb-admin-sidenav li": "changeControl"
+            "click .motb-admin-sidenav li": "changeControl",
+            "click .motb-admin-sidenav a": "prevent",
         },
 
         changeControl: function(events) {
             $(".motb-admin-sidenav li").removeClass("active");
-            $(events.currentTarget).addClass("active");
-            Events.trigger("admin:changeControl", "someone");
+            var target = $(events.currentTarget);
+            target.addClass("active");
+            Events.trigger("admin:changeControl", target.children("a").attr("href"));
             events.preventDefault();
+        },
+        
+        prevent: function(evt) {
+            evt.preventDefault();
         },
 
         render: function() {

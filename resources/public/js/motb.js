@@ -34,7 +34,7 @@ define([
              * Refer to https://github.com/tbranyen/backbone-boilerplate
              */
             $(document).on("click", 
-                "a[href]:not([data-bypass])", function(evt) {
+                "a[href]:not('[data-bypass]')", function(evt) {
 
                 var href = { 
                     prop: $(this).prop("href"), 
