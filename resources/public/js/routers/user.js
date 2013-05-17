@@ -2,13 +2,15 @@ define([
     'jquery',         
     'underscore', 
     'backbone',
-    'events'
-], function($, _, Backbone, Events) {
+    'events',
+    'views/user/user.view'
+], function($, _, Backbone, Events, UserView) {
     var UserRouter = Backbone.Router.extend({
         routes: {
             'user/login': 'loginAction'
         },
         loginAction: function() {
+            (new UserView()).render();
             alert("I'm logining >.<");
         }
     });

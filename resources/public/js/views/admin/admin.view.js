@@ -3,22 +3,26 @@ define([
     'underscore', 
     'backbone',        
     'events',
+    'models/admin/auth',
     'text!templates/admin/admin.html'
-], function($, _, Backbone, Events, adminTemplate){
+], function($, _, Backbone, Events, AuthModel, adminTemplate){
     var AdminView = Backbone.View.extend({
         el: 'body',
 
         initialize: function() {
             var that = this;
             var handler = function() {
-                //that.render();
+                alert("success");
+                that.render();
             }
-            /*this.model = new AdminModel(); // Auth
+            this.model = new AuthModel(); // Auth
             this.model.fetch({
                 success: handler,
-                error: function() {alert("hey");},
-                dataType: "jsonp"
-            });*/
+                error: function() {
+                    Events.trigger("admin:loginNeeded");
+                }, 
+                dataType: "json"
+            });
         },
         render: function() {
             this.$el.html(adminTemplate);
