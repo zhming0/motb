@@ -12,7 +12,6 @@ define([
         initialize: function() {
             var that = this;
             var handler = function() {
-                alert("success");
                 that.render();
             }
             this.model = new AuthModel(); // Auth
