@@ -15,7 +15,7 @@ define([
         routes: {
             'admin': 'defaultAction',
             'admin/*action' : 'defaultAction',
-            'admin/login' : 'loginAction'
+            'admin/login' : 'loginAction',
         },
         defaultAction: function() {
             this.adminView = new AdminView();

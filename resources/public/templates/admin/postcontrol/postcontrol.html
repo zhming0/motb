@@ -23,19 +23,26 @@
           </tr>
         </thead>
         <tbody>
+          <%
+          _.each(postslist, function(entry){
+          %>
           <tr>
-            <td> 为什么我要XX呢？</td>
-            <td> 2012/1/1</td>
+            <td> <%= entry.name %> </td>
+            <td> <%= entry.date %></td>
             <td> 
               <a class="btn btn-mini btn-primary 
                 motb-postcontrol-btn-edit">
                 <i class="icon-edit"></i>
               </a>
-              <a class="btn btn-mini btn-danger" >
+              <a class="btn btn-mini btn-danger
+                motb-postcontrol-btn-delete" >
                 <i class="icon-remove-circle"></i>
               </a>
             </td>
           </tr>
+          <%
+          });
+          %>
         </tbody>
       </table>
     </div>

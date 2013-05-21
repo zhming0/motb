@@ -2,9 +2,10 @@ define([
     'jquery',         // lib/jquery
     'underscore', // lib/underscore
     'backbone',        // lib/backbone
+    'events',
     'models/admin/auth',
     'text!templates/admin/login/adminlogin.html'
-], function($, _, Backbone, AuthModel, adminLoginTemplate) {
+], function($, _, Backbone, Events, AuthModel, adminLoginTemplate) {
     var AdminLoginView = Backbone.View.extend({
         el: "body", 
         initialize: function() {
@@ -14,6 +15,7 @@ define([
             'click #motb-adminlogin-loginButton': 'login'
         },
         login: function(evt) {
+            Backbone.history.navigate("admin/login");
             evt.preventDefault();
             var uname = $('#motb-adminlogin-inputUsername').val();
             var passwd = $('#motb-adminlogin-inputPassword').val();
@@ -23,11 +25,10 @@ define([
                 password: passwd,
             }, {
                 success: function() {
-                    alert("Login success");
                     Backbone.history.navigate("admin", true);
                 },
                 error: function(model, response) {
-                    alert(response.responseText);
+                    alert("error " + response.responseText);
                 },
                 dataType: "json"
             });

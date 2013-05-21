@@ -4,9 +4,9 @@
 
 (defn- auth [request]
   (let [ss (:session request {})]
-    (if (empty? ss)
-      false
-      true)))
+    (if (= (:login ss) true)
+      true
+      false)))
 
 (defn unauth-response [body] 
   (status (response body) 401))

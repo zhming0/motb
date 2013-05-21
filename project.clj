@@ -9,7 +9,9 @@
                  [ring/ring-json "0.2.0"]
                  [compojure "1.1.5"]
                  [org.clojure/tools.trace "0.7.5"]
-                 [congomongo "0.4.1"]]
+                 [congomongo "0.4.1"]
+                 [commons-codec/commons-codec "1.8"]]
   :plugins [[lein-ring "0.8.5"]]
   :main motb.core
-  :ring {:handler motb.core/app})
+  :ring {:handler motb.core/app
+         :init motb.mongo/init-mongo})

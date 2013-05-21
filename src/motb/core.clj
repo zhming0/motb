@@ -5,7 +5,8 @@
         [compojure.route :only [not-found resources]]
         [compojure.handler :only [site]]
         [ring.util.response :only [resource-response]]
-        [motb.api :only [api-routes]]))
+        [motb.api :only [api-routes]]
+        [motb.mongo :only [init-mongo]]))
 
 (defn- str-str [s]
   (str "\"" s "\""))
@@ -32,7 +33,9 @@
     (not-found "<h1>404!!! You know what is 404!</h1>")))
 
 (def app
-  (-> combined-routes
-    site))
+  (do
+    (init-mongo)
+    (-> combined-routes
+      site)))
 
 ;(def server (run-jetty #'app {:port 8080 :join? false}))

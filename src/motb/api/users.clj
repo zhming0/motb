@@ -4,10 +4,6 @@
        [ring.middleware.session :only [wrap-session]]
        [motb.auth :only [unauth-response wrap-auth]]))
 
-(defn tmphandler [request]
-  {:status 200
-   :body "hello"})
-
 (defn- valid-login? [request]
   (let [params (:json-params request)
         uname (params "username")
@@ -18,20 +14,26 @@
 
 (defn- valid-login-handler [request]
   {:status 200
-   :body "success"
+   :body {"login" "succeeded"}
    :session {:login true}})
 
 (defn- invalid-login-handler [request]
   (unauth-response "Username or password is wrong"))
 
 (defn login [request]
-  (if valid-login?
+  (if (valid-login? request)
     (valid-login-handler request)
     (invalid-login-handler request)))
 
 (defn checkLogin [request]
-  (response {"login" "success"}))
+  (response {"login" "already success"}))
+
+(defn logout [request]
+  {:status 200
+   :body "success"
+   :session {}})
 
 (defroutes users-routes
   (GET "/users/login" [] (wrap-auth checkLogin))
+  (GET "/users/logout" [] logout)
   (POST "/users/login" [] login))
