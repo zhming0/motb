@@ -3,20 +3,27 @@ define([
     'underscore', // lib/underscore
     'backbone',        // lib/backbone
     'views/blog/blog.view',
-], function($, _, Backbone, BlogView) {
+    'views/blog/home/home.view',
+    'views/blog/post/post.view'
+], function($, _, Backbone, BlogView, HomeView, PostView) {
     var BlogRouter = Backbone.Router.extend({
         initialize: function() {
             this.blogView = new BlogView();
         },
         routes: {
             'blog': 'defaultAction',
+            'blog/post/:id': 'showPost',
             'blog/*action' : 'defaultAction',
         },
+
+        showPost: function(id) {
+            this.blogView.render();
+            (new PostView({id: id})).render();
+        },
+
         defaultAction: function() {
             this.blogView.render();
-            require(['views/blog/home/home.view'], function(HomeView) {
-                (new HomeView()).render();
-            });
+            (new HomeView()).render();
         },
     });
     var initialize = function() {

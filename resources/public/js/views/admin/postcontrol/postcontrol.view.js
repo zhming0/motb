@@ -13,23 +13,41 @@ define([
 
         initialize: function() {
             this.collection = new PostsList();
+            var that = this;
             //this.render();
+            Events.on("postedit:done", function() {
+                that.render();
+            });
         },
 
         events: {
             "click .motb-postcontrol-btn-edit": "edit",
-            "click .motb-postcontrol-btn-delete" : "del"
+            "click .motb-postcontrol-btn-delete" : "del",
+            "click .motb-postcontrol-btn-add" : "newpost"
+        },
+
+        newpost: function(evt) {
+            var that = this;
+            require([
+                'models/post/post'
+            ], function(PostModel){
+                that.renderEdit(new PostModel()); 
+            });
+        },
+
+        renderEdit: function(model) {
+            require([
+                'views/admin/postcontrol/postedit.view'
+            ], function(PostEditView) {
+                (new PostEditView(model)).render();
+            });
         },
 
         edit: function(evt) {
             var target = $(evt.currentTarget);
             var index = target.parent().parent().index();
             var model = this.collection.at(index);
-            require([
-                'views/admin/postcontrol/postedit.view'
-            ], function(PostEditView) {
-                (new PostEditView(model)).render();
-            });
+            this.renderEdit(model);
         },
 
         del: function(evt) {

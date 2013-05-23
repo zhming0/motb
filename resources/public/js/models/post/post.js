@@ -5,23 +5,25 @@ define([
 ], function(_, Backbone, Events){
     var PostModel = Backbone.Model.extend({
         defaults: {
-            test: "我是默认值！",
-            date: "1970/7/1",
-            content: ''
+            content: '请在这里输入内容'
         },
 
         idAttribute: "_id",
 
         initialize: function() {
-            this.setDate();
-            this.on("change:date", function() {
+            if (!this.isNew())
+                this.setDate();
+            this.on("change", function() {
                 this.setDate();
             }, this);
         },
 
         url: function() {
+            if (this.isNew())
+                return "/api/posts";
             return "/api/posts/" + this.id;
         },
+
         setDate: function() {
             var d = new Date(this.get("time"));
             var day = d.getDate();

@@ -1,10 +1,10 @@
-<div class="span9">
+<div class="span12">
   <link href="css/wmd.css" rel="stylesheet" media="screen">
   <div class="motb-postcontrol-posteditor">
-    <input class="input-xxlarge" type="text" placeholder="Title" value="<%= post.name %>"> 
+    <input class="input-xxlarge motb-postedit-title" type="text" placeholder="Title" value="<%= post.name %>"> 
     <div class="wmd-panel">
       <div id="wmd-button-bar"></div>
-      <textarea class="wmd-input" id="wmd-input"><%- post.content %></textarea>
+      <textarea class="wmd-input motb-postedit-content" id="wmd-input"><%- post.content %></textarea>
     </div>
     <h3 class="muted"> Preview: </h3>
     <div id="wmd-preview" class="wmd-panel wmd-preview">
@@ -12,8 +12,11 @@
     <div style="margin-top: 10px;">
       <ul class="inline">
         <li>
-          <a class="btn btn-primary">
+          <a class="btn btn-primary motb-postedit-publish">
             Publish
+          </a>
+          <a class="btn motb-postedit-cancel">
+            Cancel
           </a>
         </li>
       </ul>

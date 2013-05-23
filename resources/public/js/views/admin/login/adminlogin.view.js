@@ -26,6 +26,7 @@ define([
             }, {
                 success: function() {
                     Backbone.history.navigate("admin", true);
+                    that.undelegateEvents();
                 },
                 error: function(model, response) {
                     alert("error " + response.responseText);
