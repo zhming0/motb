@@ -30,8 +30,8 @@ define([
         render: function() {
             var that = this;
             var handler = function() {
-                $('.masthead').hide("fast");
-                $('footer').hide("fast");
+                $('.masthead').slideUp('slow');
+                $('footer').fadeToggle('slow');
                 var data = {
                     post: that.model.toJSON()
                 };

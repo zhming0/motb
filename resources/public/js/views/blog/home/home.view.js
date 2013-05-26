@@ -33,11 +33,13 @@ define([
             $("#motb-blog-nav-home").addClass("active");
             var that = this;
             var handler = function() {
+                that.$el.slideToggle();
                 var data = {
                     postslist: that.collection.toJSON()
                 };
                 var rendered = that.template(data);
                 that.$el.html(rendered);
+                that.$el.slideToggle('fast');
             };
             this.collection.fetch({
                 success: handler,
