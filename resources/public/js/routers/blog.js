@@ -4,8 +4,9 @@ define([
     'backbone',        // lib/backbone
     'views/blog/blog.view',
     'views/blog/home/home.view',
-    'views/blog/post/post.view'
-], function($, _, Backbone, BlogView, HomeView, PostView) {
+    'views/blog/post/post.view',
+    'views/blog/contact/contact.view'
+], function($, _, Backbone, BlogView, HomeView, PostView, ContactView) {
     var BlogRouter = Backbone.Router.extend({
         initialize: function() {
             this.blogView = new BlogView();
@@ -13,7 +14,13 @@ define([
         routes: {
             'blog': 'defaultAction',
             'blog/post/:id': 'showPost',
+            'blog/contact' : 'showContact',
             'blog/*action' : 'defaultAction',
+        },
+
+        showContact: function() {
+            this.blogView.render();
+            (new ContactView()).render();
         },
 
         showPost: function(id) {

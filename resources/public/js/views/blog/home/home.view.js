@@ -29,6 +29,8 @@ define([
         },
 
         render: function() {
+            $("#masthead ul li").removeClass("active");
+            $("#motb-blog-nav-home").addClass("active");
             var that = this;
             var handler = function() {
                 var data = {

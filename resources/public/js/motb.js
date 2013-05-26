@@ -7,8 +7,7 @@ define([
     'domReady',
     'routers/blog',
     'routers/admin',
-    'routers/user'
-], function($, _, Backbone, Events, Bootstrap, domReady, Blog, Admin, User) {
+], function($, _, Backbone, Events, Bootstrap, domReady, Blog, Admin) {
 
     var MotbRouter = Backbone.Router.extend({
         routes: {
@@ -24,7 +23,6 @@ define([
 
         Blog.initialize();
         Admin.initialize();
-        User.initialize();
         new MotbRouter();
 
         Backbone.history.start({pushState: true});

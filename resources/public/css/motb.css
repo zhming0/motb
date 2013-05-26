@@ -110,3 +110,15 @@ hr {
   padding: 7px 9px;
 }
 
+.motb-blog-post {
+  background-color: #FFFFF9;
+  padding: 30px;
+  border: 1px solid #d5d5d5;
+}
+
+.motb-post-content {
+  //border-left: 1px solid #d5d5d5;
+  //border-right: 1px solid #d5d5d5;
+  padding: 30px;
+  padding-top: 0px;
+}
