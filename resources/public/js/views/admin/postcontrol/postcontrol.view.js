@@ -14,7 +14,6 @@ define([
         initialize: function() {
             this.collection = new PostsList();
             var that = this;
-            //this.render();
             Events.on("postedit:done", function() {
                 that.render();
             });

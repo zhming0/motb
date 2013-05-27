@@ -1,0 +1,8 @@
+<ul>
+  <li class="disable"> <a>&laquo;</a></li>
+  <% for(var i = 1; i <= pageCount; i++) { %>
+    <% if (i == currentPage) cls="active"; else cls=""; %>
+    <li class="<%= cls %>"> <a> <%= i %> </a> </li>
+  <% } %>
+  <li class="disable"> <a>&raquo;</a></li>
+</ul>
