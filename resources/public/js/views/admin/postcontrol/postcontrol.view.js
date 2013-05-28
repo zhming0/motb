@@ -12,7 +12,7 @@ define([
         template: _.template(postControlTemplate),
 
         initialize: function() {
-            this.collection = new PostsList();
+            this.collection = new PostsList([], {});
             var that = this;
             Events.on("postedit:done", function() {
                 that.render();

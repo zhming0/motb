@@ -15,10 +15,9 @@
 
 (defn posts-list [request] 
   "Return a list of posts title as well as date info."
-  (println request)
   (let [params (:route-params request)
-        from (:from params 0)
-        num (:num params 0)]
+        from (:from params "0")
+        num (:num params "0")]
     (response 
       (map str-id-and-timestamp 
            (mongo/fetch :posts 

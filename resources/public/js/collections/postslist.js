@@ -3,7 +3,7 @@ define([
     'backbone',
     'events',
     'models/post/post'
-], function(_, Backbone, Events, PostModel){
+], function(_, Backbone, Events, PostModel) {
     var PostsList = Backbone.Collection.extend({
         model: PostModel,
 
