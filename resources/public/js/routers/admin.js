@@ -4,30 +4,38 @@ define([
     'backbone',        // lib/backbone
     'events',
     'views/admin/admin.view',
-], function($, _, Backbone, Events, AdminView) {
+    'views/admin/login/adminlogin.view',
+    'single'
+], function($, _, Backbone, Events, AdminView, AdminLoginView, Single) {
     var AdminRouter = Backbone.Router.extend({
+
         initialize: function() {
             var that = this;
-            Events.on("admin:loginNeeded", function(){
-                that.loginAction();
-            });
+            this.instances = {};
         },
+
         routes: {
             'admin': 'defaultAction',
-            'admin/*action' : 'defaultAction',
+            'admin/posts': 'postControlAction',
+            'admin/posts/edit/:id': 'postEditAction',
             'admin/login' : 'loginAction',
+            'admin/*action' : 'defaultAction',
         },
         defaultAction: function() {
             this.adminView = new AdminView();
         },
+
+        postControlAction: function() {
+
+        },
+
+        postEditAction: function() {
+        },
+
         loginAction: function() {
-            require([
-                'views/admin/login/adminlogin.view'
-            ], function(AdminLoginView) {
-                adminLoginView = new AdminLoginView();
-                adminLoginView.render();
-            });
-        }
+            adminLoginView = Single(AdminLoginView);
+            adminLoginView.render();
+        },
     });
     var initialize = function() {
         var adminRouter = new AdminRouter();

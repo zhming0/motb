@@ -3,9 +3,11 @@ define([
     'underscore', 
     'backbone',        
     'events',
+    'views/admin/postcontrol/postedit.view',
     'collections/postslist',
+    'models/post/post',
     'text!templates/admin/postcontrol/postcontrol.html'
-], function($, _, Backbone, Events, PostsList, postControlTemplate){
+], function($, _, Backbone, Events, PostEditView, PostsList, PostModel, postControlTemplate){
     var PostControlView = Backbone.View.extend({
         el: "#control",
 
@@ -26,20 +28,12 @@ define([
         },
 
         newpost: function(evt) {
-            var that = this;
-            require([
-                'models/post/post'
-            ], function(PostModel){
-                that.renderEdit(new PostModel()); 
-            });
+            Backbone.history.navigate("admin/posts/edit");
+            this.renderEdit(new PostModel()); 
         },
 
         renderEdit: function(model) {
-            require([
-                'views/admin/postcontrol/postedit.view'
-            ], function(PostEditView) {
-                (new PostEditView(model)).render();
-            });
+            (new PostEditView(model)).render();
         },
 
         edit: function(evt) {
@@ -65,8 +59,6 @@ define([
         render: function() {
             var that = this;
             var handler = function() {
-                //console.log(that.collection.toJSON());
-                //console.log(JSON.stringify(that.collection));
                 var data = {
                     postslist: that.collection.toJSON()
                 };

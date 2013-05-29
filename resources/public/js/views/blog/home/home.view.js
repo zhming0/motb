@@ -10,6 +10,7 @@ define([
 ], function($, _, Backbone, Events, PostsList, PostView, PaginationView, homeTemplate){
     var HomeView = Backbone.View.extend({
         el: '#page',
+
         initialize: function(){
             this.collection = new PostsList([], {
                 currentPage: 1,

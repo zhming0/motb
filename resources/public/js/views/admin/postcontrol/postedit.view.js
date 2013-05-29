@@ -14,8 +14,6 @@ define([
 
         initialize: function(model) {
             this.model = model;
-            //console.log(model.get("name"));
-            //console.log(model.url());
             var that = this;
             domReady(function(){
                 that.converter = new Markdown.getSanitizingConverter();
@@ -52,7 +50,6 @@ define([
         render: function() {
             var that = this;
             var handler = function() {
-                //console.log(that.model.toJSON());
                 var data = {
                     post: that.model.toJSON()
                 };
@@ -70,8 +67,6 @@ define([
                     dataType: "json"
                 });
             }
-            //this.$el.html(postEditTemplate);
-            //this.editor.run();
         }
     });
     return PostEditView;

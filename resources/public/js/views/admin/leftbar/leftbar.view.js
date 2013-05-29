@@ -6,10 +6,9 @@ define([
     'text!templates/admin/leftbar/leftbar.html'
 ], function($, _, Backbone, Events, leftbarTemplate){
     var LeftbarView = Backbone.View.extend({
-        el: "#leftbar",
+        el: "#motb-admin-leftbar",
 
         initialize: function() {
-            //this.render();
         },
 
         events: {
@@ -25,13 +24,8 @@ define([
             events.preventDefault();
         },
         
-        prevent: function(evt) {
-            evt.preventDefault();
-        },
-
         render: function() {
             this.$el.html(leftbarTemplate);
-            
         }
     });
     return LeftbarView;

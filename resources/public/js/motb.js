@@ -43,9 +43,8 @@ define([
                 Backbone.history.navigate(href.attr, true);
             });
 
-            Events.on("login-needed", function(msg) {
-                Backbone.history.navigate("user/login", true); 
-            });
+            //Events.on("login-needed", function(msg) {
+            //});
         });
     };
     return {
