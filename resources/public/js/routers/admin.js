@@ -10,8 +10,6 @@ define([
     var AdminRouter = Backbone.Router.extend({
 
         initialize: function() {
-            var that = this;
-            this.instances = {};
         },
 
         routes: {
@@ -21,6 +19,7 @@ define([
             'admin/login' : 'loginAction',
             'admin/*action' : 'defaultAction',
         },
+
         defaultAction: function() {
             this.adminView = new AdminView();
         },
@@ -33,7 +32,8 @@ define([
         },
 
         loginAction: function() {
-            adminLoginView = Single(AdminLoginView);
+            //adminLoginView = Single(AdminLoginView);
+            adminLoginView = new AdminLoginView();
             adminLoginView.render();
         },
     });
