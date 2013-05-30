@@ -12,9 +12,10 @@ A website designed to be my personal blog and a demo.
 
 ## Usage
 
-### Start mongodb:
+### Prepare Mongodb:
 1. Download mongodb from [**here**](http://www.mongodb.org/downloads)
 2. Run it: `mongod`
+3. Set up a new db called `motb` by using the console `mongo`.
 
 ### Run development server:
 
@@ -22,9 +23,15 @@ A website designed to be my personal blog and a demo.
 	
 ### Deploy:
 
+* Optimizing:
+   1. Download [**r.js**](http://requirejs.org/docs/release/2.1.6/r.js)
+   2. Change pwd to `resouces/public`.
+   3. Run it using the config file: `resources/pubic/build.js`
+       `r.js -o build.js`
+   4. Replace the **public file** by **public-build**.
 * Generate *war file*
 	`lein ring uberwar`
-* Put it to any server that support .war file
+* Put it to any server that support .war file such as Tomcat.
 
 ## License
 
