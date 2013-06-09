@@ -22,9 +22,9 @@ define([
         },
 
         events: {
-            "click .motb-postcontrol-btn-edit": "edit",
-            "click .motb-postcontrol-btn-delete" : "del",
-            "click .motb-postcontrol-btn-add" : "newpost"
+            "click #edit-post": "edit",
+            "click #delete-post" : "del",
+            "click #add-post" : "newpost"
         },
 
         newpost: function(evt) {

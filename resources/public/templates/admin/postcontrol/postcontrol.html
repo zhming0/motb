@@ -1,18 +1,18 @@
-<div class="motb-postcontrol" id="motb-postcontrol">
-  <div class="page-header muted">
-    <h2> Post Control Center </h2>
+<div>
+  <div class="page-header">
+    <h1> <small> Post Control Center </small></h1>
   </div>
-  <div class="motb-postcontrol-buttonbar"> 
+  <div class=""> 
     <ul class="inline">
       <li>
-        <a class="btn btn-primary btn-small motb-postcontrol-btn-add"> 
+        <a class="btn btn-primary btn-small" id="add-post"> 
           <i class="icon-pencil icon-white"></i>
           Add 
         </a>
       </li>
     </ul>
   </div>
-  <div class="motb-postcontrol-articlelist">
+  <div class="">
     <table class="table table-hover">
       <thead> 
         <tr>
@@ -29,12 +29,10 @@
           <td> <%= entry.name %> </td>
           <td> <%= entry.date %></td>
           <td> 
-            <a class="btn btn-mini btn-primary 
-              motb-postcontrol-btn-edit">
+            <a class="btn btn-mini btn-primary" id="edit-post">
               <i class="icon-edit"></i>
             </a>
-            <a class="btn btn-mini btn-danger
-              motb-postcontrol-btn-delete" >
+            <a class="btn btn-mini btn-danger" id="delete-post" >
               <i class="icon-remove-circle"></i>
             </a>
           </td>

@@ -6,33 +6,45 @@ body.admin {
   padding-top: 45px;
 }
 
+body.admin-login {
+  background-color: $panel-color;
+}
+
 .post-edit {
   margin: 0 auto;
   margin-top: 30px;
   width: 90%;
 }
 
-.motb-adminlogin-form {
-  max-width: 300px;
-  padding: 19px 29px 29px;
-  margin: 0 auto 20px;
-  background-color: #f5f5f5;
+.leftbar {
+  margin-right: 5px;
+  margin-top: 40px;
+  font-size: 15px;
   border: 1px solid #e5e5e5;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: 0 1px 2px rgba(0,0,0,.05);
-
+  background-color: $panel-color;
   @include rounded(5px);
-  
+
+  li {
+    line-height: 25px;
+  }
+  ul {
+    padding-bottom: 5px;
+  }
 }
 
-.motb-adminlogin-form > input {
-  font-size: 16px;
-  height: auto;
-  margin-bottom: 15px;
-  padding: 7px 9px;
+.admin-login-form {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 150px auto 0px;
+  border: 1px solid #e5e5e5;
+  background-color: white;
+  @include rounded(5px);
+
+  & > input {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+  }
 }
 

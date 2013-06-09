@@ -21,6 +21,7 @@ define([
             'admin/photos': 'photosControlAction',
             'admin/settings': 'settingsAction',
             'admin/login' : 'loginAction',
+            'admin/logout' : 'logoutAction',
             'admin/*action' : 'defaultAction',
         },
 
@@ -64,6 +65,12 @@ define([
             adminLoginView = new AdminLoginView();
             adminLoginView.render();
         },
+
+        logoutAction: function() {
+            $.ajax("/api/users/logout").done(function() {
+                Backbone.history.navigate("/", true);
+            });
+        }
     });
     var initialize = function() {
         var adminRouter = new AdminRouter();

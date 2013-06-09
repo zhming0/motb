@@ -14,13 +14,13 @@ define([
         },
 
         events: {
-            'click #motb-adminlogin-loginButton': 'login'
+            'click #login': 'login'
         },
 
         login: function(evt) {
             evt.preventDefault();
-            var uname = $('#motb-adminlogin-inputUsername').val();
-            var passwd = $('#motb-adminlogin-inputPassword').val();
+            var uname = $('#username').val();
+            var passwd = $('#password').val();
             var that = this;
             this.model.save({
                 username: uname,
@@ -38,6 +38,7 @@ define([
         },
 
         render: function() {
+            $("body").removeClass().addClass("admin-login");
             this.$el.html(adminLoginTemplate);
         }
     });
