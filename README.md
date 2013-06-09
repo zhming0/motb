@@ -7,13 +7,14 @@ A website designed to be my personal blog and a demo.
 ## Tools
 
 * Server: MongoDB + Compojure + Ring
-* Front end: Backbone.js + Require.js + jQuery + Bootstrap
+* Front end: Backbone.js + Require.js + jQuery + Bootstrap + Sass
 * Plugin: Pagedown.js
 
 ## Usage
 
-### Prepare Mongodb:
+### Prepare:
 1. Download mongodb from [**here**](http://www.mongodb.org/downloads)
+2. Use SASS to compile sass files at `resources/sass` and set output to `resources/public/css`
 2. Run it: `mongod`
 3. Set up a new db called `motb` by using the console `mongo`.
 
