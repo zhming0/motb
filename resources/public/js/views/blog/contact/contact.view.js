@@ -10,9 +10,8 @@ define([
         template: contactTemplate,
 
         render: function() {
+            $("#contact").addClass("active");
             this.$el.slideToggle();
-            $("#masthead ul li").removeClass("active");
-            $("#motb-blog-nav-contact").addClass("active");
             this.$el.html(contactTemplate);
             this.$el.slideToggle();
         }

@@ -1,50 +1,48 @@
-<div class="span9">
-  <div class="motb-postcontrol" id="motb-postcontrol">
-    <div class="page-header">
-      <h1> Post Control Center </h1>
-    </div>
-    <div class="motb-postcontrol-buttonbar"> 
-      <ul class="inline">
-        <li>
-          <a class="btn btn-primary motb-postcontrol-btn-add"> 
-            <i class="icon-pencil icon-white"></i>
-            Add 
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="motb-postcontrol-articlelist">
-      <table class="table table-hover">
-        <thead> 
-          <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Operation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%
-          _.each(postslist, function(entry){
-          %>
-          <tr>
-            <td> <%= entry.name %> </td>
-            <td> <%= entry.date %></td>
-            <td> 
-              <a class="btn btn-mini btn-primary 
-                motb-postcontrol-btn-edit">
-                <i class="icon-edit"></i>
-              </a>
-              <a class="btn btn-mini btn-danger
-                motb-postcontrol-btn-delete" >
-                <i class="icon-remove-circle"></i>
-              </a>
-            </td>
-          </tr>
-          <%
-          });
-          %>
-        </tbody>
-      </table>
-    </div>
+<div class="motb-postcontrol" id="motb-postcontrol">
+  <div class="page-header muted">
+    <h2> Post Control Center </h2>
+  </div>
+  <div class="motb-postcontrol-buttonbar"> 
+    <ul class="inline">
+      <li>
+        <a class="btn btn-primary btn-small motb-postcontrol-btn-add"> 
+          <i class="icon-pencil icon-white"></i>
+          Add 
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="motb-postcontrol-articlelist">
+    <table class="table table-hover">
+      <thead> 
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%
+        _.each(postslist, function(entry){
+        %>
+        <tr>
+          <td> <%= entry.name %> </td>
+          <td> <%= entry.date %></td>
+          <td> 
+            <a class="btn btn-mini btn-primary 
+              motb-postcontrol-btn-edit">
+              <i class="icon-edit"></i>
+            </a>
+            <a class="btn btn-mini btn-danger
+              motb-postcontrol-btn-delete" >
+              <i class="icon-remove-circle"></i>
+            </a>
+          </td>
+        </tr>
+        <%
+        });
+        %>
+      </tbody>
+    </table>
   </div>
 </div>

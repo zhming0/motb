@@ -30,13 +30,12 @@ define([
         render: function() {
             var that = this;
             var handler = function() {
-                $('.masthead').slideUp('slow');
-                $('footer').fadeToggle('slow');
+                $('#masthead').slideUp('slow');
+                $('#footer').fadeToggle('slow');
                 var data = {
                     post: that.model.toJSON()
                 };
                 data.post.content = that.converter.makeHtml(data.post.content);
-                console.log(that.model.toJSON()); 
                 var rendered = that.template(data);
                 that.$el.html(rendered);
             };
@@ -47,7 +46,6 @@ define([
                 },
                 dataType: "json"
             });
-            //this.$el.html(homeTemplate);
         }
     });
     return PostView;

@@ -18,9 +18,13 @@ define([
             });
         },
 
+        teardown: function() {
+            this.undelegateEvents();
+        },
+
         events: {
-            "click .motb-blog-selectpost": 'selectPost',
-            "click #motb-blog-pagination li": 'changePage',
+            "click .posts .post a": 'selectPost',
+            "click .posts .pagination li": 'changePage',
         },
 
         template: _.template(homeTemplate),    
@@ -48,8 +52,9 @@ define([
         },
 
         render: function() {
-            $("#masthead ul li").removeClass("active");
-            $("#motb-blog-nav-home").addClass("active");
+            $("body").removeClass().addClass("blog");
+            $("#home").addClass("active");
+            //$("#motb-blog-nav-home").addClass("active");
             var that = this;
             var handler = function() {
                 that.$el.slideToggle();

@@ -2,11 +2,12 @@ define([
     'jquery',         // lib/jquery
     'underscore', // lib/underscore
     'backbone',        // lib/backbone
+    'single',
     'events',
     'views/admin/admin.view',
     'views/admin/login/adminlogin.view',
-    'single'
-], function($, _, Backbone, Events, AdminView, AdminLoginView, Single) {
+    'views/admin/postcontrol/postcontrol.view'
+], function($, _, Backbone, Single, Events, AdminView, AdminLoginView, PostControlView) {
     var AdminRouter = Backbone.Router.extend({
 
         initialize: function() {
@@ -15,24 +16,51 @@ define([
         routes: {
             'admin': 'defaultAction',
             'admin/posts': 'postControlAction',
+            'admin/posts/new': 'postAddAction',
             'admin/posts/edit/:id': 'postEditAction',
+            'admin/photos': 'photosControlAction',
+            'admin/settings': 'settingsAction',
             'admin/login' : 'loginAction',
             'admin/*action' : 'defaultAction',
         },
 
+        initAdmin: function() {
+            return Single("adminview", AdminView, [], {refresh: false});
+        },
+
+        initAdminWith: function(func) {
+            var adminView = this.initAdmin();
+            adminView.once("authorized", func);
+            adminView.render();
+        },
+
         defaultAction: function() {
-            this.adminView = new AdminView();
+            this.initAdminWith(function() {
+                Single("postcontrol", PostControlView, 
+                        [], {parent: "adminview"}).render(); 
+            });
+        },
+
+        photosControlAction: function() {
+            this.initAdmin().render();
+        },
+
+        settingsAction: function() {
+            this.initAdmin().render();
         },
 
         postControlAction: function() {
-
+            this.initAdminWith(function() {
+                Single("postcontrol", PostControlView, 
+                        [], {parent: "adminview"}).render(); 
+            });
         },
 
-        postEditAction: function() {
+        postEditAction: function(id) {
+            this.initView();
         },
 
         loginAction: function() {
-            //adminLoginView = Single(AdminLoginView);
             adminLoginView = new AdminLoginView();
             adminLoginView.render();
         },

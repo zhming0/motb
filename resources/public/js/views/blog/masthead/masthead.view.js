@@ -11,14 +11,18 @@ define([
         },
         render: function() {
             this.$el.html(mastheadTemplate);
-            $('#inputButton').mouseenter(function() {
+            $('#search-icon').mouseenter(function() {
                 $(this).hide();
-                $("#searchInput").show("fast");
-                $("#searchInput").focus();
+                $("#search-input").show("fast");
+                $("#search-input").focus();
             });
-            $('#searchInput').focusout(function(){
+            $('#search-input').focusout(function(){
                 $(this).hide();
-                $('#inputButton').show("slow");
+                $('#search-icon').fadeToggle("slow");
+            });
+            $('.user-menu li:not(:last)').click(function() {
+                $(".user-menu li").removeClass("active");
+                $(this).addClass("active");
             });
         }
     });

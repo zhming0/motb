@@ -39,8 +39,8 @@ define([
                     attr: $(this).attr("href") 
                 };
 
-                evt.preventDefault();
                 Backbone.history.navigate(href.attr, true);
+                evt.preventDefault();
             });
 
             //Events.on("login-needed", function(msg) {

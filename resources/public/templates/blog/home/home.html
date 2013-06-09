@@ -1,16 +1,18 @@
-<% _.each(postslist, function(entry){ %>
-  <div class="row-fluid articleItem"> 
-    <div class="span11 offset1">
-      <h4> 
-        <% if ((new Date()).getTime() - entry.time < 24 * 3600 * 1000) {%>
-          <span class="label label-info">New</span>
-        <% } %>
-        <a href="" data-Bypass class="motb-blog-selectpost"><%= entry.name %></a>
-        <small><%= entry.date %></small>
-      </h4>
+<div class="posts">
+  <% _.each(postslist, function(entry){ %>
+    <div class="row-fluid post"> 
+      <div class="span11 offset1">
+        <h4> 
+          <% if ((new Date()).getTime() - entry.time < 24 * 3600 * 1000) {%>
+            <span class="label label-info">New</span>
+          <% } %>
+          <a href="" data-Bypass><%= entry.name %></a>
+          <small><%= entry.date %></small>
+        </h4>
+      </div>
     </div>
-  </div>
-<% });%>
+  <% });%>
 
-<div class="pagination text-center" id="motb-blog-pagination">
+  <div class="pagination text-center" id="pagination">
+  </div>
 </div>

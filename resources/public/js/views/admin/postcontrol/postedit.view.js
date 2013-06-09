@@ -10,7 +10,7 @@ define([
     'markdownSanitizer'
 ], function($, _, Backbone, Events, domReady, postEditTemplate){
     var PostEditView = Backbone.View.extend({
-        el: "#control",
+        el: "#main",
 
         initialize: function(model) {
             this.model = model;
@@ -22,20 +22,19 @@ define([
         },
 
         events: {
-            'click .motb-postedit-cancel': 'cancelEdit',
-            'click .motb-postedit-publish': 'publish'
+            'click #cancel': 'cancelEdit',
+            'click #publish': 'publish'
         },
 
         cancelEdit: function() {
             this.undelegateEvents();
-            $(".motb-admin-sidebar").show();
-            Events.trigger('postedit:done');
+            //Events.trigger('postedit:done');
         },
 
         publish: function() {
             var that = this;
-            this.model.set("name", $(".motb-postedit-title").val());
-            this.model.set("content", $(".motb-postedit-content").val());
+            this.model.set("name", $("#title").val());
+            this.model.set("content", $("#wmd-input").val());
             this.model.save({}, {
                 success: function() {
                     that.cancelEdit();
@@ -53,7 +52,6 @@ define([
                 var data = {
                     post: that.model.toJSON()
                 };
-                $(".motb-admin-sidebar").hide();
                 var rendered = that.template(data);
                 that.$el.html(rendered);
                 that.editor.run();

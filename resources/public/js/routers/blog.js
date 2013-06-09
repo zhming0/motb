@@ -2,15 +2,16 @@ define([
     'jquery',         // lib/jquery
     'underscore', // lib/underscore
     'backbone',        // lib/backbone
+    'single',
     'views/blog/blog.view',
     'views/blog/home/home.view',
     'views/blog/post/post.view',
     'views/blog/contact/contact.view'
-], function($, _, Backbone, BlogView, HomeView, PostView, ContactView) {
+], function($, _, Backbone, Single, BlogView, HomeView, PostView, ContactView) {
     var BlogRouter = Backbone.Router.extend({
         initialize: function() {
-            this.blogView = new BlogView();
         },
+
         routes: {
             'blog': 'defaultAction',
             'blog/post/:id': 'showPost',
@@ -18,19 +19,28 @@ define([
             'blog/*action' : 'defaultAction',
         },
 
+        initView: function() {
+            Single("blogview", BlogView, [], {refresh: false});
+            $("#masthead").show();
+            $("#footer").show();
+        },
+
         showContact: function() {
-            this.blogView.render();
-            (new ContactView()).render();
+            this.initView();
+            Single("contactview", ContactView, [], 
+                    {refresh: false}).render();
         },
 
         showPost: function(id) {
-            this.blogView.render();
-            (new PostView({id: id})).render();
+            this.initView();
+            Single("postview" + id, PostView, 
+                    [{id: id}]).render();
         },
 
         defaultAction: function() {
-            this.blogView.render();
-            (new HomeView()).render();
+            this.initView();
+            homeView = Single('homeview', HomeView, []);
+            homeView.render();
         },
     });
     var initialize = function() {

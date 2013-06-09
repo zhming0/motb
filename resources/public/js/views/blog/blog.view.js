@@ -8,6 +8,11 @@ define([
 ], function($, _, Backbone, MastheadView, FooterView, blogTemplate) {
     var BlogView = Backbone.View.extend({
         el: "body",
+
+        initialize: function() {
+            this.render();
+        },
+
         render: function() {
             this.$el.html(blogTemplate);
             (new FooterView()).render();

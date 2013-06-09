@@ -9,16 +9,16 @@ define([
     'text!templates/admin/postcontrol/postcontrol.html'
 ], function($, _, Backbone, Events, PostEditView, PostsList, PostModel, postControlTemplate){
     var PostControlView = Backbone.View.extend({
-        el: "#control",
+        el: "#main",
 
         template: _.template(postControlTemplate),
 
         initialize: function() {
             this.collection = new PostsList([], {});
             var that = this;
-            Events.on("postedit:done", function() {
+            /*Events.on("postedit:done", function() {
                 that.render();
-            });
+            });*/
         },
 
         events: {

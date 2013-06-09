@@ -1,0 +1,19 @@
+/* Third party plugins */
+@import "plugins/bootstrap";
+@import "plugins/wmd";
+
+/* Apps */
+@import "apps/blog";
+@import "apps/admin";
+
+/* Global setting */
+
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+hr {
+  margin: 30px 0;
+}
+

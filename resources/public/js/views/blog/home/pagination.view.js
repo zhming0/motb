@@ -5,12 +5,14 @@ define([
     'events',
     'text!templates/blog/home/pagination.html'
 ], function($, _, Backbone, Events, paginationTemplate){
+
     var PaginationModel = Backbone.Model.extend({
         url: "/api/posts/count",
     });
+
     var PagenationView = Backbone.View.extend({
 
-        el: '#motb-blog-pagination',
+        el: '#pagination',
 
         initialize: function(options) {
             this.currentPage = options.currentPage ? options.currentPage : 0;
@@ -34,7 +36,7 @@ define([
             this.model.fetch({
                 success: handler, 
                 error: function() {
-                    alert("hello");
+                    alert("Can't get pagination");
                 },
                 dataType: "json"
             });
